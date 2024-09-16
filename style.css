@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.container {
+    max-width: 800px;
+    min-height: 1000px;
+    background-color: #252A32;
+    margin: 0 auto;
+    border-radius: 3%;
+
+}
+
+.display {
+    height: 100px;
+    background-color: grey;  
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.displayField {
+   width: 90%;
+   margin: 0 auto;
+   padding: 1px;
+   position: relative;
+    justify-content: flex-end;
+    display: flex;
+    color: white;
+    font-size: 2.5em;
+    
+}
+
+.buttons {
+    margin: 20px 10px;
+    padding-bottom: 20px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 180px);
+    grid-template-areas:
+        "t y u i"
+        "q w m r"
+        "h j k l"
+        "d e f g"
+        "a a b c";
+}
+
+#btn0 {
+    grid-area: a;
+}
+
+#btn1 {
+    grid-area: d;
+}
+
+#btn2 {
+    grid-area: e;
+}
+
+#btn3 {
+    grid-area: f;
+}
+
+#btn4 {
+    grid-area: h;
+}
+
+#btn5 {
+    grid-area: j;
+}
+
+#btn6 {
+    grid-area: k;
+}
+
+#btn7 {
+    grid-area: q;
+}
+
+#btn8 {
+    grid-area: w;
+}
+
+#btn9 {
+    grid-area: m;
+}
+
+#btnDot {
+    grid-area: b;
+}
+
+#btnAc {
+    grid-area: t;
+}
+
+#btnDel {
+    grid-area: y;
+}
+
+#btnPercentage {
+    grid-area: u;
+}
+
+#btnDivide {
+    grid-area: i;
+}
+
+#btnMultiply {
+    grid-area: r;
+}
+
+#btnSubtract {
+    grid-area: l;
+}
+
+#btnAdd {
+    grid-area: g;
+}
+
+#btnEqual {
+    grid-area: c;
+}
+
+.buttons > button {
+    border-radius: 100%;
+    background-color: #333333;
+    color: white;
+    font-size: 2em;
+    border: 1px solid #282A36;
+}
+
+.buttons > #btn0 {
+    border-radius: 40px;
+}
+
+#btnEqual, #operator {
+    background-color: #e38c16;
+}
+
+#btnAc, #btnDel, #btnPercentage {
+    background-color: #A6A6A6;
+}
+
+.buttons > button:hover {
+    scale: 0.98;
+    opacity: 0.9;
+}
