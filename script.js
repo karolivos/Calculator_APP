@@ -11,13 +11,18 @@ function multiplyNums(...nums) {
 }
 
 function divideNums(...nums) {
+    if (num2 != 0) {
   return nums.reduce((acc, curr) => acc / curr);
+    } else {
+        return 0;
+    }
 }
 
 let num1 = "";
 let operator = "";
 let num2 = "";
 let isOperatorClicked = false;
+let result = "";
 
 function operate(operator, ...nums) {
   switch (operator) {
@@ -39,6 +44,7 @@ const btns = document.querySelectorAll("button");
 const clear = document.querySelector("#btnAc");
 const delOne = document.querySelector("#btnDel");
 const operatorButton = document.querySelectorAll("#operator");
+const equalBtn = document.querySelector("#btnEqual");
 
 btns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -55,8 +61,8 @@ btns.forEach((button) => {
 operatorButton.forEach((button) => {
   button.addEventListener("click", () => {
     isOperatorClicked = true;
-    operator = button.value;
-    displayResult.textContent = "";
+    operator = button.dataset.id;
+    displayResult.textContent = ""
   });
 });
 
@@ -93,3 +99,8 @@ dotButton.addEventListener("click", () => {
     }
   }
 });
+
+equalBtn.addEventListener("click", function () {
+    result = operate(operator, num1, num2);
+    displayResult.textContent = result;
+})
