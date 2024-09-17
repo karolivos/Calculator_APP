@@ -1,28 +1,32 @@
 function addNumbers(...nums) {
-  return nums.reduce((acc, curr) => acc + curr);
+  return nums.reduce((acc, curr) => parseFloat(acc) + parseFloat(curr));
 }
 
 function subtractNums(...nums) {
-  return nums.reduce((acc, curr) => acc - curr);
+  return nums.reduce((acc, curr) => parseFloat(acc) - parseFloat(curr));
 }
 
 function multiplyNums(...nums) {
-  return nums.reduce((acc, curr) => acc * curr);
+  return nums.reduce((acc, curr) => parseFloat(acc) * parseFloat(curr));
 }
 
 function divideNums(...nums) {
-    if (num2 != 0) {
-  return nums.reduce((acc, curr) => acc / curr);
-    } else {
-        return 0;
-    }
+return nums.reduce((acc, curr) => {
+  if (parseFloat(curr) != 0) {
+    return parseFloat(acc) / parseFloat(curr);
+  } else {
+    return "Can't do that, Baby"
+  }
+})
 }
+  
 
 let num1 = "";
 let operator = "";
 let num2 = "";
 let isOperatorClicked = false;
 let result = "";
+let count = 0;
 
 function operate(operator, ...nums) {
   switch (operator) {
@@ -58,11 +62,32 @@ btns.forEach((button) => {
   });
 });
 
+// operatorButton.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     isOperatorClicked = true;
+//     operator = button.dataset.id;
+//     displayResult.textContent = "";
+//     count++;
+//       if(count > 1) {
+
+//         num1 = result;
+//         let secoundOperation = operate(operator, num1, num2);
+//         displayResult.textContent = secoundOperation;
+//       }
+//   });
+// });
+
 operatorButton.forEach((button) => {
   button.addEventListener("click", () => {
-    isOperatorClicked = true;
-    operator = button.dataset.id;
-    displayResult.textContent = ""
+    if (isOperatorClicked && num2) {
+      result = operate(operator, num1, num2);
+      displayResult.textContent = result;
+      num1 = result;
+      num2 = ""
+    }
+      operator = button.dataset.id;
+      isOperatorClicked = true;
+      count++
   });
 });
 
@@ -72,6 +97,7 @@ clear.addEventListener("click", () => {
   num2 = "";
   operator = "";
   isOperatorClicked = false;
+  count = 0;
 });
 
 delOne.addEventListener("click", () => {
