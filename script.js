@@ -26,7 +26,6 @@ let operator = "";
 let num2 = "";
 let isOperatorClicked = false;
 let result = "";
-let count = 0;
 
 function operate(operator, ...nums) {
   switch (operator) {
@@ -87,7 +86,6 @@ operatorButton.forEach((button) => {
     }
       operator = button.dataset.id;
       isOperatorClicked = true;
-      count++
   });
 });
 
@@ -127,6 +125,12 @@ dotButton.addEventListener("click", () => {
 });
 
 equalBtn.addEventListener("click", function () {
+  if (num1 && num2 && operator) {
     result = operate(operator, num1, num2);
     displayResult.textContent = result;
+    num1 = result;
+    num2 = "";
+    isOperatorClicked = false;
+    operator = "";
+  }
 })
